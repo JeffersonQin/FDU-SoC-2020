@@ -1,0 +1,14 @@
+TECH = M2
+COMPILER_PATH = C:/Users/JeffersonQin/Documents/ToolChain/Tools/CamelStudio/compiler/bin
+TARGET = hello
+TARGET_ADDRESS = 10000000
+DATA_ADDRESS = 01000000
+RODATA_ADDRESS = 
+ARCHITECT = standalone
+AUTOLOAD = false
+C_SOURCES = interrupt.c
+A_SOURCES = hello.s
+//HEADERS = 
+//DEBUG = 
+//CUSTOM_LIBRARY = 
+//LIBRARY = 
