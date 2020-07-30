@@ -6,16 +6,11 @@ ASM_getnum:
 	li					$12, 	0							# $12 = 0
 	li					$13, 	8							# $13 = 8
 	li					$15, 	0							# $15 = 0
+	add					$29, $31, $0						# $24 = $31 + $0
 	READ_ONE_BIT_:
-		UART_READ_:
-			li			$9,		0x1f800000					# uart starting port 01 = busy port, 02 = write port， 05 = data ready port
+			jal 		ASM_getch
 			nop
-		UART_WRITE_WAIT_:
-			lw			$10,	5($9)
-			beq			$10,	$0,		UART_WRITE_WAIT_	# if $10 == $0 then UART_WRITE_WAIT_
 			nop
-			nop												# delay slot
-			lw			$14,	0($9)						# $14 = 0($9)
 			li			$6, 	48							# $6 = 48
 			sub			$14, 	$14, 	$6					# $14 = $14 - $6
 			li			$4, 	9							# $4 = 9
@@ -35,6 +30,8 @@ ASM_getnum:
 				nop
 				nop
 				addi		$2, 	$15, 	0					# $2 = $15 + 0
+				add			$31, 	$29, 	$0					# $31 = $24 + $0
+				
 				jr			$31									# jump to $31
 				nop
 				nop
